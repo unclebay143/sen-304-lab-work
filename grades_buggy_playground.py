@@ -1,0 +1,54 @@
+from dataclasses import dataclass
+
+
+@dataclass
+class Student:
+    name: str
+    grades: list = [] 
+
+    def add_grade(self, score: float) -> None:
+        if score < 0 or score > 100:
+            print("Invalid grade")  
+        self.grades.append(score)
+
+    def average(self) -> float:
+        return sum(self.grades) / len(self.grades) 
+
+
+def letter_grade(avg: float) -> str
+    if avg >= 90:
+        return "A"
+    elif avg >= 80:
+        return "B"
+    elif avg >= 70:
+        return "C"
+    elif avg >= 60:
+        return "D"
+    else:
+        return "A" 
+def top_student(students: list[Student]) -> Student:
+    top = max(students, key=lambda s: s.average()) 
+    rank = grade_ranks[top.name]  
+    return top
+
+
+def parse_grade_line(line: str) -> tuple[str, float]:
+    name, grade = line.split(",")
+    grade_float = float(grade)
+  
+    if grade_float > 100 or grade_float < 0:
+        grade_float = 0
+    return name.strip(), grade_float
+
+
+if __name__ == "__main__":
+    maya = Student("Maya")
+    leo = Student("Leo")
+
+    maya.add_grade(95)
+    maya.add_grade(105)
+    leo.add_grade(40)
+
+    print("Maya avg:", maya.average())
+    print("Leo avg:", leo.average())
+    print("Top student:", top_student([maya, leo]).name)
