@@ -50,12 +50,11 @@ def parse_grade_line(line: str) -> tuple[str, float]:
     return name.strip(), grade_float
 
 
-if __name__ == "__main__":
+def main() -> None:
     maya = Student("Maya")
     leo = Student("Leo")
     sam = Student("Sam")
     sam.add_grade(100)
-
 
     maya.add_grade(95)
     maya.add_grade(105)
@@ -68,3 +67,13 @@ if __name__ == "__main__":
     print("parse_grade_line('Ben,90'):", parse_grade_line("Ben,90"))
     print("Sam avg:", sam.average())
     print("Top student:", top_student([maya, leo, sam]).name)
+
+    # bug to cause exception
+    print("parse_grade_line('Ben,150'):", parse_grade_line("Ben,150"))
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except ValueError as e:
+        print(f"Error (invalid value or state): {e}")

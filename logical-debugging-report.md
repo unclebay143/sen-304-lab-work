@@ -1,6 +1,6 @@
 # Logical debugging report
 
-**Module:** logical bugs only (program may run but behavior or data is wrong).
+**Scope:** Logical bugs and fixes (wrong behavior without crashing). 
 
 ---
 
@@ -208,7 +208,29 @@ def top_student(students: list[Student]) -> Student:
     return max(students, key=lambda s: s.average())
 ```
 
-Picking the top student by **average** does not require **`grade_ranks`**; removing the **`rank`** line avoids **`KeyError`** and the unused variable. 
+Picking the top student by **average** does not require **`grade_ranks`**; removing the **`rank`** line avoids **`KeyError`** and the unused variable.
 
 ![After fix: top_student handles empty list and any student names](screenshots/5-top_student-after.png)
+
 ---
+
+## 6. Exception handling in `main` 
+
+Besides **raising** `ValueError` inside helpers (e.g. **`parse_grade_line`**, **`top_student`**), we **handle** runtime errors at the **program boundary** with **`try` / `except`** so the user sees a short message instead of an uncaught traceback when something goes wrong.
+
+![Exception handling in main](screenshots/6-exception-handling-in-main-before.png)
+
+**Implementation** (in **`grades-final-code.py`**): the demo logic lives in **`main()`**, and **`if __name__ == "__main__":`** wraps **`main()`** in **`try` / `except ValueError`**.
+
+```python
+def main() -> None:
+    maya = Student("Maya")
+
+if __name__ == "__main__":
+    try:
+        main()
+    except ValueError as e:
+        print(f"Error (invalid value or state): {e}")
+```
+
+![Exception handling in main](screenshots/6-exception-handling-in-main-after.png)
