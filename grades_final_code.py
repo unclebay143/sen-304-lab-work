@@ -68,9 +68,6 @@ def main() -> None:
     print("Sam avg:", sam.average())
     print("Top student:", top_student([maya, leo, sam]).name)
 
-    # bug to cause exception
-    print("parse_grade_line('Ben,150'):", parse_grade_line("Ben,150"))
-
 
 if __name__ == "__main__":
     try:
