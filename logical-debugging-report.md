@@ -220,7 +220,7 @@ Besides **raising** `ValueError` inside helpers (e.g. **`parse_grade_line`**, **
 
 ![Exception handling in main](screenshots/6-exception-handling-in-main-before.png)
 
-**Implementation** (in **`grades-final-code.py`**): the demo logic lives in **`main()`**, and **`if __name__ == "__main__":`** wraps **`main()`** in **`try` / `except ValueError`**.
+**Implementation** (in **`grades_final_code.py`**): the demo logic lives in **`main()`**, and **`if __name__ == "__main__":`** wraps **`main()`** in **`try` / `except ValueError`**.
 
 ```python
 def main() -> None:

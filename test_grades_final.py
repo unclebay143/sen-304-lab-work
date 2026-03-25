@@ -1,28 +1,13 @@
 """
-Part B — PyTest against grades-final-code.py (import via path; hyphen not valid in module name).
+Part B — PyTest against grades_final_code.py.
 Covers equivalence / boundary (black-box) and branch coverage (white-box) for the lab brief.
 """
 
 from __future__ import annotations
 
-import importlib.util
-from pathlib import Path
-
 import pytest
 
-_ROOT = Path(__file__).resolve().parent
-_SPEC = importlib.util.spec_from_file_location(
-    "grades_final_code",
-    _ROOT / "grades_final_code.py",
-)
-_mod = importlib.util.module_from_spec(_SPEC)
-assert _SPEC.loader is not None
-_SPEC.loader.exec_module(_mod)
-
-Student = _mod.Student
-letter_grade = _mod.letter_grade
-parse_grade_line = _mod.parse_grade_line
-top_student = _mod.top_student
+from grades_final_code import Student, letter_grade, parse_grade_line, top_student
 
 
 # --- Student.add_grade (valid partition, invalid partition, boundaries) ---
